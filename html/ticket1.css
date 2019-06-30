@@ -1,0 +1,29 @@
+html, body{
+margin:0;
+padding:0;
+border:0px;
+}
+
+
+p{
+	margin: 0px;
+	border: 0px;
+	padding: 0px;
+	font-size: 14pt;
+}
+
+.org{
+	font-size: 14pt;
+}
+
+.info{
+	margin-top: 7px;
+}
+
+h1{
+	font-size: 30pt;
+}
+
+h2{
+	font-size:20px;
+}
