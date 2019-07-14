@@ -3,40 +3,129 @@
 	<head>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="PersonalAreaOrg.css">
+		<title>Личный Кабинет Организатора</title>
+		<link rel="shortcut icon" href="src/firstletter.png" type="image/x-icon">
+		
+		<script src="https://www.google.com/jsapi"></script>
+		<script src="PersonalAreaOrg.js"></script>
+  <script>
+   google.load("visualization", "1", {packages:["corechart"]});
+   google.setOnLoadCallback(drawChart);
+   function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+     ['Месяц', 'Билеты'],
+     ['Январь', 75],
+     ['Февраль', 102],
+     ['Март', 60],
+	 ['Апрель', 52],
+     ['Май', 125],
+     ['Июнь', 136],
+	 ['Июль', 106],
+     ['Август', 96],
+     ['Сентябрь', 67],
+	 ['Октябрь', 86],
+     ['Ноябрь', 92],
+     ['Декабрь', 49]
+    ]);
+    var options = {
+     title: 'Продано билетов за год',
+     hAxis: {title: 'Месяц'},
+     vAxis: {title: 'Билеты, шт.'}
+    };
+    var chart = new google.visualization.ColumnChart(document.getElementById('tickets'));
+    chart.draw(data, options);
+   }
+  </script>
+  
+  <script>
+   google.load("visualization", "1", {packages:["corechart"]});
+   google.setOnLoadCallback(drawChart);
+   function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+     ['Месяц', 'Рубли'],
+     ['Январь', 7500],
+     ['Февраль', 10200],
+     ['Март', 6000],
+	 ['Апрель', 5200],
+     ['Май', 12500],
+     ['Июнь', 13600],
+	 ['Июль', 10600],
+     ['Август', 9600],
+     ['Сентябрь', 6700],
+	 ['Октябрь', 8600],
+     ['Ноябрь', 9200],
+     ['Декабрь', 4900]
+    ]);
+    var options = {
+     title: 'Заработано за год',
+     hAxis: {title: 'Месяц'},
+     vAxis: {title: 'Рубли'}
+    };
+    var chart = new google.visualization.ColumnChart(document.getElementById('money'));
+    chart.draw(data, options);
+   }
+  </script>
+		
+		
 	</head>
 	<body>
-		<div class="divheader">
+		<a class="fixa" href="#top" onmouseover="UpOnMouseOver(this)" onmouseout="UpOnMouseOut(this)">&#x2191  Наверх</a>
+		<div class="divheader" name="top">
 			<div class="divlogo"><img class="imglogo" src="src/logo.png"></div>
+			<div class="divuserphoto">
+				<img src="src/user_photo.png" class="userphoto">
+			</div>
 			<div class="diva">
 				<a src="">Ф.И.О.</a>
 			</div>
+			
 			<div class="diva">
 				<a src="">ГЛАВНАЯ</a>
 			</div>
 		</div>
-		
+		<div class="maindiv">
 		<div class="left">
-			<div class="divnav"><a class="divnav" href="#event_settings">Настройки мероприятия</a></div>
-			<div class="divnav"><a class="divnav"href="#stat">Статистика</a></div>
-			<div class="divnav"><a class="divnav" href="#finances">Финансы</a></div>
+			<div class="divnav"><a class="nava" href="#event_settings">Настройки мероприятия</a></div>
+			<div class="divnav"><a class="nava" href="#stat">Статистика</a></div>
+			<div class="divnav"><a class="nava" href="#finances">Финансы</a></div>
 		</div>
 		<div class="right">
 			<form>
 				<h2><a name="event_settings"></a>Настройка Мероприятий</h2>
-				<p>Название мероприятия: <input type="text" size="40" autocomplete="Ваше Мероприятие"></p>
-				<p>Стоимость билета: <input type="number"></p>
-				<p>Количество билетов: <input type="number" autocomplete="0"></p>
-				<p>Дата: <input type="date"></p>
-				<p>Время: <input type="time"></p>
-				<p>Место: <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A3a33d7c706231759354c48a0ccaea953151181c665b3621d6acb29cfbbdbd232&amp;width=400&amp;height=300&amp;lang=ru_RU&amp;scroll=true"></script></p>
-				<p><input type="submit"></p>
+				
+				
+				<p class="pform"><div class="leftdiv">Название мероприятия: </div>
+				<div class="rightdiv"><input type="text" value="Ваше Мероприятие"></div></p>
+				
+				<p class="pform"><div class="leftdiv">Стоимость билета:</div>
+				<div class="rightdiv"><input type="number" value="100"></div></p>
+				
+				<p class="pform"><div class="leftdiv">Количество билетов: </div>
+				<div class="rightdiv"><input type="number" value="100"></div></p>
+				
+				<p class="pform"><div class="leftdiv">Дата: </div>
+				<div class="rightdiv"><input type="date" value="2000-01-01"></div></p>
+				
+				<p class="pform"><div class="leftdiv">Время: </div>
+				<div><input type="time" value="00:00"></div></p>
+				
+				<p class="pform"><div class="leftdiv">Место: </div>
+				<div class="rightdiv"><input type="text" value="Ваше Место"></div></p>
+				
+				<p><input class="subbutton" type="submit" onmouseover="SubmitOnMouseOver(this)" onmouseout="SubmitOnMouseOut(this)"></p>
 			</form>
+			
 			<h2><a name = "stat"></a>Статистика</h2>
-			<p>Продано всего билетов: <p>
+			<p><div class="leftdiv">Продано всего билетов: </div>
+			<div class="rightdiv">100</div><p>
+			<div id="tickets" style="width: 85%; height: 400px;"></div>
+			
+			<h2><a name = "finances"></a>Финансы</h2>
+			<p><div class="leftdiv">Заработано всего: </div>
+			<div class="rightdiv">100000</div><p>
+			<div id="money" style="width: 85%; height: 400px;"></div>
 		</div>
-		
-		<main>
-		</main>
+		</div>
 		
 	</body>
 </html>
