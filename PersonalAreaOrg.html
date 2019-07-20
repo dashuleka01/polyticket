@@ -8,7 +8,7 @@
 		
 		<script src="https://www.google.com/jsapi"></script>
 		<script src="PersonalAreaOrg.js"></script>
-  <script>
+    <script>
    google.load("visualization", "1", {packages:["corechart"]});
    google.setOnLoadCallback(drawChart);
    function drawChart() {
@@ -65,11 +65,27 @@
     chart.draw(data, options);
    }
   </script>
+  
+	<script>
+		if(window.pageXOffset >= 20){
+		alert('kek');
+		}
+	</script>
+ 
 		
 		
 	</head>
 	<body>
-		<a class="fixa" href="#top" onmouseover="UpOnMouseOver(this)" onmouseout="UpOnMouseOut(this)">&#x2191  Наверх</a>
+			
+	
+		<a class="fixa" href="#top" id="upbutton" onmouseover="UpOnMouseOver(this)" onmouseout="UpOnMouseOut(this)">&#x2191  Наверх</a>
+		<dialog id="saveorno">
+			<p>Вы уверены, что хотите сохранить изменения?</p>
+			<button class="yesbutton" onclick="YesButtonOnClick(this)">Да</button>
+			<button class="cancelbutton" onclick="CancelButtonOnClick(this)">Отмена</button>
+		</dialog>
+		
+		
 		<div class="divheader" name="top">
 			<div class="divlogo"><img class="imglogo" src="src/logo.png"></div>
 			<div class="divuserphoto">
@@ -83,49 +99,63 @@
 				<a src="">ГЛАВНАЯ</a>
 			</div>
 		</div>
-		<div class="maindiv">
-		<div class="left">
-			<div class="divnav"><a class="nava" href="#event_settings">Настройки мероприятия</a></div>
-			<div class="divnav"><a class="nava" href="#stat">Статистика</a></div>
-			<div class="divnav"><a class="nava" href="#finances">Финансы</a></div>
-		</div>
-		<div class="right">
-			<form>
-				<h2><a name="event_settings"></a>Настройка Мероприятий</h2>
-				
-				
-				<p class="pform"><div class="leftdiv">Название мероприятия: </div>
-				<div class="rightdiv"><input type="text" value="Ваше Мероприятие"></div></p>
-				
-				<p class="pform"><div class="leftdiv">Стоимость билета:</div>
-				<div class="rightdiv"><input type="number" value="100"></div></p>
-				
-				<p class="pform"><div class="leftdiv">Количество билетов: </div>
-				<div class="rightdiv"><input type="number" value="100"></div></p>
-				
-				<p class="pform"><div class="leftdiv">Дата: </div>
-				<div class="rightdiv"><input type="date" value="2000-01-01"></div></p>
-				
-				<p class="pform"><div class="leftdiv">Время: </div>
-				<div><input type="time" value="00:00"></div></p>
-				
-				<p class="pform"><div class="leftdiv">Место: </div>
-				<div class="rightdiv"><input type="text" value="Ваше Место"></div></p>
-				
-				<p><input class="subbutton" type="submit" onmouseover="SubmitOnMouseOver(this)" onmouseout="SubmitOnMouseOut(this)"></p>
-			</form>
-			
-			<h2><a name = "stat"></a>Статистика</h2>
-			<p><div class="leftdiv">Продано всего билетов: </div>
-			<div class="rightdiv">100</div><p>
-			<div id="tickets" style="width: 85%; height: 400px;"></div>
-			
-			<h2><a name = "finances"></a>Финансы</h2>
-			<p><div class="leftdiv">Заработано всего: </div>
-			<div class="rightdiv">100000</div><p>
-			<div id="money" style="width: 85%; height: 400px;"></div>
-		</div>
-		</div>
 		
+		<div class="maindiv" width=1000% height="1000px">
+			<div class="left">
+				<div class="divnav"><a class="nava" href="#event_settings">Настройки мероприятия</a></div>
+				<div class="divnav"><a class="nava" href="#stat">Статистика</a></div>
+				<div class="divnav"><a class="nava" href="#finances">Финансы</a></div>
+			</div>
+		
+			<div class="right">
+				<form>
+					<h2><a name="event_settings"></a>Настройка Мероприятий</h2>
+				
+					<p class="pform"><div class="leftdiv">Название мероприятия: </div>
+					<div class="rightdiv"><input type="text" value="Ваше Мероприятие"></div></p>
+				
+					<p class="pform"><div class="leftdiv">Стоимость билета:</div>
+					<div class="rightdiv"><input type="number" value="100"></div></p>
+				
+					<p class="pform"><div class="leftdiv">Количество билетов: </div>
+					<div class="rightdiv"><input type="number" value="100"></div></p>
+				
+					<p class="pform"><div class="leftdiv">Дата: </div>
+					<div class="rightdiv"><input type="date" value="2000-01-01"></div></p>
+				
+					<p class="pform"><div class="leftdiv">Время: </div>
+					<div><input type="time" value="00:00"></div></p>
+				
+					<p class="pform"><div class="leftdiv">Место: </div>
+					<div class="rightdiv"><input type="text" value="Ваше Место"></div></p>
+				
+					<p><input class="subbutton" id="show" type="submit" onmouseover="SubmitOnMouseOver(this)" 
+					onmouseout="SubmitOnMouseOut(this)" onclick="SubmitOnMouseOnClick(this)">
+					<label class="saved" id="saved">Данные успешно сохранены</label></p>
+				</form>
+			
+				<h2><a name = "stat"></a>Статистика</h2>
+				<p><div class="leftdiv">Продано всего билетов: </div>
+				<div class="rightdiv">100</div><p>
+				<div id="tickets" style="width: 85%; height: 400px;"></div>
+			
+				<h2><a name = "finances"></a>Финансы</h2>
+				<p><div class="leftdiv">Заработано всего: </div>
+				<div class="rightdiv">100000</div><p>
+				<div id="money" style="width: 85%; height: 400px"></div>
+			</div>
+		</div>
+		<script>
+			window.onscroll = function() {
+				if( window.pageYOffset > 100){
+					var UpButton = document.getElementById('upbutton');
+					UpButton.style.visibility = 'visible';
+				}
+				if( window.pageYOffset < 100){
+					var UpButton = document.getElementById('upbutton');
+					UpButton.style.visibility = 'hidden';
+				}
+			}
+		</script>
 	</body>
 </html>
